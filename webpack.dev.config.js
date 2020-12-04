@@ -18,6 +18,9 @@ module.exports = {
     open: true,
     port: 5050,
   },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
   module: {
     rules: [
       {
@@ -25,7 +28,7 @@ module.exports = {
         use: ['style-loader', 'css-loader', 'stylus-loader'],
       },
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         use: 'babel-loader',
         exclude: /node_modules/,
       },

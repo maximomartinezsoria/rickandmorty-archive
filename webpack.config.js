@@ -20,6 +20,9 @@ module.exports = {
   optimization: {
     minimizer: [new TerserJSPlugin(), new OptimizeCSSAssetsPlugin()],
   },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
   module: {
     rules: [
       {
@@ -33,7 +36,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         use: 'babel-loader',
         exclude: /node_modules/,
       },
