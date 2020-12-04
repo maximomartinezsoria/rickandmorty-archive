@@ -1,4 +1,7 @@
 import React from 'react'
+import { getCharacters } from './services/Character'
+
+getCharacters()
 
 const App = () => (
   <section>
