@@ -2,6 +2,7 @@ import React from 'react'
 import { NameFilter } from '../components/filters/NameFilter'
 import { StatusFilter } from '../components/filters/StatusFilter'
 import { AppliedFilters } from '../components/filters/AppliedFilters'
+import { OrderSelect } from '../components/filters/OrderSelect'
 
 export const Filters = () => {
   return (
@@ -12,6 +13,7 @@ export const Filters = () => {
       </div>
       <div>
         <AppliedFilters />
+        <OrderSelect />
       </div>
     </section>
   )

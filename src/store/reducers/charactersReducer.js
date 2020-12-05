@@ -5,11 +5,15 @@ import {
   SET_NAME_QUERY,
   SET_STATUS_QUERY,
   FILTER_CHARACTERS,
+  ORDER_CHARACTERS_ALPHABETICALLY,
+  ORDER_CHARACTERS_POPULARLY,
 } from '../action-types/characters'
 
 const initialCharactersState = {
   characters: [],
   filteredCharacters: [],
+  popularlyOrderedCharacters: [],
+  alphabeticallyOrderedCharacters: [],
   laoding: false,
   hasError: false,
 
@@ -24,6 +28,7 @@ export default function charactersReducer(state = initialCharactersState, action
         ...state,
         characters: action.payload,
         filteredCharacters: action.payload,
+        popularlyOrderedCharacters: action.payload,
         hasError: false,
         loading: false,
       }
@@ -45,6 +50,26 @@ export default function charactersReducer(state = initialCharactersState, action
       })
 
       return { ...state, filteredCharacters }
+
+    case ORDER_CHARACTERS_ALPHABETICALLY:
+      const alphabeticallyCompareFn = (a, b) => a.name.localeCompare(b.name)
+      const alphabeticallyOrderedCharacters = [...state.characters].sort(alphabeticallyCompareFn)
+
+      return {
+        ...state,
+        characters: alphabeticallyOrderedCharacters,
+        alphabeticallyOrderedCharacters,
+        filteredCharacters: [...state.filteredCharacters].sort(alphabeticallyCompareFn),
+      }
+
+    case ORDER_CHARACTERS_POPULARLY:
+      const popularlyCompareFn = (a, b) => a.id - b.id
+
+      return {
+        ...state,
+        characters: state.popularlyOrderedCharacters,
+        filteredCharacters: [...state.filteredCharacters].sort(popularlyCompareFn),
+      }
 
     case SET_NAME_QUERY:
       return { ...state, nameQuery: action.payload }

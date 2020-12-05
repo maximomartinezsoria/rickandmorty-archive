@@ -5,6 +5,8 @@ import {
   SET_LOADING,
   SET_NAME_QUERY,
   SET_STATUS_QUERY,
+  ORDER_CHARACTERS_ALPHABETICALLY,
+  ORDER_CHARACTERS_POPULARLY,
 } from '../action-types/characters'
 import Character from '../../services/Character'
 
@@ -46,5 +48,13 @@ export const setStatusQuery = (statusQuery) => {
   return {
     type: SET_STATUS_QUERY,
     payload: statusQuery,
+  }
+}
+
+export const orderCharactersBy = (orderBy) => {
+  const type = orderBy === 'popular' ? ORDER_CHARACTERS_POPULARLY : ORDER_CHARACTERS_ALPHABETICALLY
+  return {
+    type,
+    payload: orderBy,
   }
 }
