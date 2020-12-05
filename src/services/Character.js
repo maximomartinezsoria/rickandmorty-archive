@@ -3,11 +3,10 @@ import { rickAndMortyApi } from '../config'
 
 const characterEndpoint = `${rickAndMortyApi}/character`
 
-async function getCharacters(page, name = '', status = '') {
-  const pageParam = `page=${page}`
+async function getCharacters(name = '', status = '') {
   const nameParam = `name=${name}`
   const statusParam = `status=${status}`
-  const characters = await fetcher(`${characterEndpoint}/?${pageParam}&${nameParam}&${statusParam}`)
+  const characters = await fetcher(`${characterEndpoint}/?${nameParam}&${statusParam}`)
   return characters.results
 }
 

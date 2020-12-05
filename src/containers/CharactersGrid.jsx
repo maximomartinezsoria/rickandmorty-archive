@@ -8,12 +8,15 @@ export const CharactersGrid = () => {
   const characters = useSelector((state) => state.characters.characters)
   const nameQuery = useSelector((state) => state.characters.nameQuery)
   const statusQuery = useSelector((state) => state.characters.statusQuery)
+  const isLoading = useSelector((state) => state.characters.loading)
+  const hasError = useSelector((state) => state.characters.error)
 
   useEffect(() => {
-    dispatch(getCharacters(1, nameQuery, statusQuery))
+    dispatch(getCharacters(nameQuery, statusQuery))
   }, [nameQuery, statusQuery])
 
-  if (!characters.length) return <p>No characters were found.</p>
+  if (isLoading) return <p>Loading...</p>
+  if (hasError) return <p>Sorry, there was an error. Plase try again later.</p>
   return (
     <section>
       {characters.map((character) => (
