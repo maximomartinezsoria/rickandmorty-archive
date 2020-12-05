@@ -1,7 +1,10 @@
 import React from 'react'
 import { Header } from './components/Header'
-import { getCharacters } from './services/Character'
+import { CharactersGrid } from './containers/CharactersGrid'
 
-getCharacters()
-
-export const App = () => <Header />
+export const App = () => (
+  <>
+    <Header />
+    <CharactersGrid />
+  </>
+)

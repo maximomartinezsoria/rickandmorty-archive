@@ -1,10 +1,10 @@
 import { GET_CHARACTERS } from '../action-types/characters'
-import { getCharacters } from '../../services/Character'
+import Character from '../../services/Character'
 
-export const getProjects = () => async (dispatch) => {
+export const getCharacters = () => async (dispatch) => {
   // TODO: handle loafing
   try {
-    const characters = await getCharacters()
+    const characters = await Character.get()
 
     dispatch({
       type: GET_CHARACTERS,
