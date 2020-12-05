@@ -1,19 +1,25 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { setStatusQuery } from '../../store/actions/charactersActions'
+import React, { useState, useEffect, useRef } from 'react'
+import { useDispatch } from 'react-redux'
 import { capitalize } from '../../helpers'
+import { filterCharacters, setStatusQuery } from '../../store/actions/charactersActions'
 
 export const StatusFilter = () => {
-  const statusQuery = useSelector((state) => state.characters.statusQuery)
+  const [statusQuery, setStatusQueryState] = useState('')
   const dispatch = useDispatch()
+  const statusSelect = useRef(null)
   const possibleStatus = ['alive', 'dead', 'unknown']
 
-  const handleChange = (event) => {
-    dispatch(setStatusQuery(event.target.value))
+  useEffect(() => {
+    dispatch(setStatusQuery(statusQuery))
+    dispatch(filterCharacters())
+  }, [statusQuery])
+
+  const handleChange = () => {
+    setStatusQueryState(statusSelect.current.value)
   }
 
   return (
-    <select value={statusQuery} onChange={handleChange}>
+    <select ref={statusSelect} value={statusQuery} onChange={handleChange}>
       <option value="" disabled>
         Status
       </option>

@@ -3,12 +3,24 @@ import { rickAndMortyApi } from '../config'
 
 const characterEndpoint = `${rickAndMortyApi}/character`
 
-async function getCharacters(name = '', status = '') {
-  const nameParam = `name=${name}`
-  const statusParam = `status=${status}`
-  const endpoint = `${characterEndpoint}/?${nameParam}&${statusParam}`
-  const [characters, statusCode] = await fetcher(endpoint)
-  return [characters.results, statusCode]
+async function getCharacters() {
+  const [charactersResponse, statusCode] = await fetcher(characterEndpoint)
+
+  const characters = charactersResponse.results.map((character) => ({
+    ...character,
+    episodes: getEpisodeNumbers(character.episode),
+  }))
+
+  return [characters, statusCode]
+}
+
+function getEpisodeNumbers(episodes) {
+  return episodes.map((episode) => {
+    // Get episode number
+    // 'https://rickandmortyapi.com/api/episode/1'
+    const regexResult = episode.match(/episode\/(\d\d?)/)
+    return { [regexResult[1]]: true }
+  })
 }
 
 export default {

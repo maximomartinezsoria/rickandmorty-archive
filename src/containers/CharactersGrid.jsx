@@ -6,15 +6,10 @@ import { WithCharacters } from '../hoc/withCharacters'
 const CharactersGridComponent = ({ characters }) => {
   const isLoading = useSelector((state) => state.characters.loading)
   const hasError = useSelector((state) => state.characters.hasError)
-  const error = useSelector((state) => state.characters.error)
 
   if (isLoading) return <p>Loading...</p>
-  if (hasError)
-    return error === 'notFound' ? (
-      <p>There is nothing here. Try changing the search criteria.</p>
-    ) : (
-      <p>Sorry, there was an error. Plase try again later.</p>
-    )
+  if (hasError) return <p>Sorry, there was an error. Plase try again later.</p>
+  if (!characters.length) return <p>There is nothing here. Try changing the search criteria.</p>
 
   return (
     <section>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import useDebounce from '../../hooks/useDebounce'
 import { useDispatch } from 'react-redux'
-import { setNameQuery } from '../../store/actions/charactersActions'
+import { filterCharacters, setNameQuery } from '../../store/actions/charactersActions'
 
 export const NameFilter = () => {
   const [nameQuery, setNameQueryState] = useState('')
@@ -11,6 +11,7 @@ export const NameFilter = () => {
 
   useEffect(() => {
     dispatch(setNameQuery(nameQuery))
+    dispatch(filterCharacters())
   }, [debouncedNameQuery])
 
   const handleChange = () => {

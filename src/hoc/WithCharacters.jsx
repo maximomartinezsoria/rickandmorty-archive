@@ -4,7 +4,7 @@ import { getCharacters } from '../store/actions/charactersActions'
 
 export const WithCharacters = (Component) => (props) => {
   const dispatch = useDispatch()
-  const characters = useSelector((state) => state.characters.characters)
+  const characters = useSelector((state) => state.characters.filteredCharacters)
 
   useEffect(() => {
     dispatch(getCharacters())

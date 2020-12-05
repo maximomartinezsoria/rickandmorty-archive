@@ -4,6 +4,7 @@ import {
   SET_LOADING,
   SET_NAME_QUERY,
   SET_STATUS_QUERY,
+  FILTER_CHARACTERS,
 } from '../action-types/characters'
 
 const initialCharactersState = {
@@ -11,7 +12,7 @@ const initialCharactersState = {
   filteredCharacters: [],
   laoding: false,
   hasError: false,
-  error: '',
+
   nameQuery: '',
   statusQuery: '',
 }
@@ -24,7 +25,6 @@ export default function charactersReducer(state = initialCharactersState, action
         characters: action.payload,
         filteredCharacters: action.payload,
         hasError: false,
-        error: '',
         loading: false,
       }
 
@@ -32,7 +32,19 @@ export default function charactersReducer(state = initialCharactersState, action
       return { ...state, loading: true }
 
     case SET_ERROR:
-      return { ...state, hasError: true, error: action.payload, loading: false }
+      return { ...state, hasError: true, loading: false }
+
+    case FILTER_CHARACTERS:
+      const filteredCharacters = state.characters.filter((character) => {
+        const { name, status } = character
+        const nameRegex = new RegExp(state.nameQuery, 'i')
+        const statusAreEqual = state.statusQuery.toLowerCase() === status.toLowerCase()
+        const hasQueryStatus = !!state.statusQuery && statusAreEqual
+
+        return name.match(nameRegex) && hasQueryStatus
+      })
+
+      return { ...state, filteredCharacters }
 
     case SET_NAME_QUERY:
       return { ...state, nameQuery: action.payload }
