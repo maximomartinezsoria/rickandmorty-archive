@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { CharacterCard } from '../components/CharacterCard'
 import { getCharacters } from '../store/actions/charactersActions'
 
 export const CharactersGrid = () => {
@@ -14,7 +15,7 @@ export const CharactersGrid = () => {
   return (
     <section>
       {characters.map((character) => (
-        <p>{character.name}</p>
+        <CharacterCard key={character.id} character={character} />
       ))}
     </section>
   )
