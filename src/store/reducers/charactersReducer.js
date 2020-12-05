@@ -39,7 +39,7 @@ export default function charactersReducer(state = initialCharactersState, action
         const { name, status } = character
         const nameRegex = new RegExp(state.nameQuery, 'i')
         const statusAreEqual = state.statusQuery.toLowerCase() === status.toLowerCase()
-        const hasQueryStatus = !!state.statusQuery && statusAreEqual
+        const hasQueryStatus = !state.statusQuery || statusAreEqual
 
         return name.match(nameRegex) && hasQueryStatus
       })
