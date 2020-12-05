@@ -1,0 +1,37 @@
+.Filters
+    margin-bottom: 3rem
+
+    &__row 
+        width: 100%
+        display: block
+        text-transform: uppercase
+        margin-bottom: 1rem
+
+        &:last-child 
+            margin-bottom: 0
+
+        & > *
+            margin-bottom: 1rem
+
+        @media (min-width: 768px) 
+            display: flex
+            justify-content: space-between
+            align-items: center
+            margin-bottom: 1.5rem
+
+            & > *
+                margin-bottom: 0
+
+    input,
+    select
+        padding: 1rem 1.2rem
+        background-color: primary-color
+        border: 0
+        text-transform: uppercase
+
+    &__selectStatus
+        width: 100%
+
+        @media (min-width: 768px) 
+            width: 25%
+            

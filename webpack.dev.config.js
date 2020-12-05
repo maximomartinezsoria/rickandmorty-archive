@@ -19,7 +19,7 @@ module.exports = {
     port: 5050,
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', 'styl'],
   },
   module: {
     rules: [

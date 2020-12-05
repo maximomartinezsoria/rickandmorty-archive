@@ -6,12 +6,12 @@ import { OrderSelect } from '../components/filters/OrderSelect'
 
 export const Filters = () => {
   return (
-    <section>
-      <div>
+    <section className="Filters">
+      <div className="Filters__row">
         <NameFilter />
         <StatusFilter />
       </div>
-      <div>
+      <div className="Filters__row">
         <AppliedFilters />
         <OrderSelect />
       </div>

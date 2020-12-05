@@ -15,8 +15,8 @@ export const OrderSelect = () => {
   }
 
   return (
-    <div>
-      Order by
+    <div className="OrderBy">
+      <p className="OrderBy__title">Order by:</p>
       <select ref={orderBySelect} onChange={handleChange}>
         {orderByValues.map((value, index) => (
           <option key={index} value={value}>

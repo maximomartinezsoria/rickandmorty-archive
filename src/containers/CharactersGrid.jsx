@@ -12,7 +12,7 @@ const CharactersGridComponent = ({ characters }) => {
   if (!characters.length) return <p>There is nothing here. Try changing the search criteria.</p>
 
   return (
-    <section>
+    <section className="CharactersGrid">
       {characters.map((character) => (
         <CharacterCard key={character.id} character={character} />
       ))}

@@ -1,0 +1,78 @@
+.CharactersGrid
+    display: grid
+    grid-template-columns: 1fr
+    grid-gap: 3.5rem 2.5rem
+
+    @media (min-width: 500px)
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr))
+
+
+    .CharacterCard
+        background-color: primary-color
+        border-radius: 10px
+
+        @media (min-width: 768px)
+            display: flex
+
+
+        &__textWrapper
+            display: flex
+            justify-content: space-between
+            align-items: space-between
+            width: 100%
+            padding: 1rem
+
+            @media (min-width: 768px)
+                width: 55%
+
+        &__name 
+            font-size: 1.5rem
+            font-weight: 500 
+            line-height: 1
+
+        &__species 
+            font-size: .85rem 
+            color: #999
+            margin-bottom: 1rem
+
+        &__data
+            margin-bottom: 1rem
+
+            &Label
+                color: #666
+
+            &Name 
+                color: #000
+
+        &__status 
+            padding-right: 1rem
+            writing-mode: vertical-rl
+            transform: rotate(180deg)
+
+            &::before
+                content: ''
+                width: 10px
+                height: 10px
+                background-color: var(--circleColor)
+                border-radius: 50%
+                display: inline-block
+                margin-bottom: 5px
+
+        &__image
+            width: 100%
+            height: auto
+            position: relative
+            overflow: hidden
+            padding-bottom: 45%
+            border-radius: 10px 10px 0 0
+
+            @media (min-width: 768px)
+                width: 45%
+                border-radius: 10px 0 0 10px
+
+            img 
+                position: absolute
+                width: 100%
+                height: 100%
+                object-fit: cover
+                object-position: center

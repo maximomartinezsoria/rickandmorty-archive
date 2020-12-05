@@ -16,19 +16,20 @@ export const AppliedFilters = () => {
   }
 
   return (
-    <div>
-      Filters:
+    <div className="AppliedFilters">
+      <p className="AppliedFilters__title">Filters:</p>
+
       {nameQuery && (
-        <p>
-          {nameQuery}
-          <button onClick={clearNameQuery}>&times;</button>
-        </p>
+        <button className="AppliedFilters__button" onClick={clearNameQuery}>
+          <span className="AppliedFilters__label">{nameQuery}</span>
+          &times;
+        </button>
       )}
       {statusQuery && (
-        <p>
-          {statusQuery}
-          <button onClick={clearStatusQuery}>&times;</button>
-        </p>
+        <button className="AppliedFilters__button" onClick={clearStatusQuery}>
+          <span className="AppliedFilters__label">{statusQuery}</span>
+          &times;
+        </button>
       )}
     </div>
   )
