@@ -11,7 +11,11 @@ export const getCharacters = (name = '', status = '') => async (dispatch) => {
   dispatch({ type: SET_LOADING })
 
   try {
-    const characters = await Character.get(name, status)
+    const [characters, statusCode] = await Character.get(name, status)
+    // statusCode is 4**
+    if (Math.floor(statusCode / 100) === 4) {
+      throw new Error('notFound')
+    }
 
     dispatch({
       type: GET_CHARACTERS,
@@ -20,6 +24,7 @@ export const getCharacters = (name = '', status = '') => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: SET_ERROR,
+      payload: error.message,
     })
   }
 }

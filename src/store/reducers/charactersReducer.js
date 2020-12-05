@@ -10,7 +10,8 @@ const initialCharactersState = {
   characters: [],
   filteredCharacters: [],
   laoding: false,
-  error: false,
+  hasError: false,
+  error: '',
   nameQuery: '',
   statusQuery: '',
 }
@@ -22,7 +23,8 @@ export default function charactersReducer(state = initialCharactersState, action
         ...state,
         characters: action.payload,
         filteredCharacters: action.payload,
-        error: false,
+        hasError: false,
+        error: '',
         loading: false,
       }
 
@@ -30,7 +32,7 @@ export default function charactersReducer(state = initialCharactersState, action
       return { ...state, loading: true }
 
     case SET_ERROR:
-      return { ...state, error: true, loading: false }
+      return { ...state, hasError: true, error: action.payload, loading: false }
 
     case SET_NAME_QUERY:
       return { ...state, nameQuery: action.payload }

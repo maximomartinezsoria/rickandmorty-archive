@@ -6,8 +6,9 @@ const characterEndpoint = `${rickAndMortyApi}/character`
 async function getCharacters(name = '', status = '') {
   const nameParam = `name=${name}`
   const statusParam = `status=${status}`
-  const characters = await fetcher(`${characterEndpoint}/?${nameParam}&${statusParam}`)
-  return characters.results
+  const endpoint = `${characterEndpoint}/?${nameParam}&${statusParam}`
+  const [characters, statusCode] = await fetcher(endpoint)
+  return [characters.results, statusCode]
 }
 
 export default {
