@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { CharacterCard } from '../components/CharacterCard'
 import { WithCharacters } from '../hoc/withCharacters'
 
-const CharactersGridComponent = ({ characters }) => {
+export const CharactersGridComponent = ({ characters }) => {
   const isLoading = useSelector((state) => state.characters.loading)
   const hasError = useSelector((state) => state.characters.hasError)
 
