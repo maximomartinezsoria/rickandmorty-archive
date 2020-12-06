@@ -12,6 +12,9 @@
   },
   "author": "Maximo Martinez Soria <maximo.martinezsoria@gmail.com>",
   "license": "MIT",
+  "engines": {
+    "node": "12.19.0"
+  },
   "dependencies": {
     "@babel/register": "^7.12.1",
     "@babel/runtime": "^7.12.5",
