@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { CharacterCard } from '../components/CharacterCard'
-import { WithCharacters } from '../hoc/withCharacters'
+import { WithCharacters } from '../hoc/WithCharacters'
 
 export const CharactersGridComponent = ({ characters }) => {
   const isLoading = useSelector((state) => state.characters.loading)
