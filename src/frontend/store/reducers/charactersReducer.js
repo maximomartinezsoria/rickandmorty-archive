@@ -53,7 +53,10 @@ export default function charactersReducer(state = initialCharactersState, action
 
     case ORDER_CHARACTERS_ALPHABETICALLY:
       const alphabeticallyCompareFn = (a, b) => a.name.localeCompare(b.name)
-      const alphabeticallyOrderedCharacters = [...state.characters].sort(alphabeticallyCompareFn)
+      const alphabeticallyOrderedCharacters =
+        state.alphabeticallyOrderedCharacters.length > 0
+          ? state.alphabeticallyOrderedCharacters
+          : [...state.characters].sort(alphabeticallyCompareFn)
 
       return {
         ...state,
