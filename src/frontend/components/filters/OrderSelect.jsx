@@ -10,7 +10,6 @@ export const OrderSelect = () => {
 
   const handleChange = () => {
     const newOrderBy = orderBySelect.current.value
-    console.log(newOrderBy)
     dispatch(orderCharactersBy(newOrderBy))
   }
 
