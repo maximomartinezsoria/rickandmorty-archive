@@ -23,6 +23,5 @@ app.listen(PORT, (error) => {
     return
   }
 
-  console.log('Server ready')
-  console.log(`http://localhost:${PORT}`)
+  console.log(`Server listening on port: ${PORT}`)
 })
