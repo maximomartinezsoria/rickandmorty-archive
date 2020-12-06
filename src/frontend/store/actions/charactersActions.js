@@ -1,5 +1,5 @@
 import {
-  GET_CHARACTERS,
+  SET_CHARACTERS,
   FILTER_CHARACTERS,
   SET_ERROR,
   SET_LOADING,
@@ -11,29 +11,42 @@ import {
 import Character from '../../services/Character'
 
 export const getCharacters = () => async (dispatch) => {
-  dispatch({ type: SET_LOADING })
+  dispatch(setLoading())
 
   try {
     const [characters, statusCode] = await Character.get()
     // statusCode is not 2**
     if (Math.floor(statusCode / 100) !== 2) throw new Error()
 
-    dispatch({
-      type: GET_CHARACTERS,
-      payload: characters,
-    })
+    dispatch(setCharacters(characters))
   } catch (error) {
     console.log(error)
-    dispatch({
-      type: SET_ERROR,
-    })
+    dispatch(setError())
   }
 }
 
-export const filterCharacters = (query) => {
+export const setCharacters = (characters) => {
+  return {
+    type: SET_CHARACTERS,
+    payload: characters,
+  }
+}
+
+export const setLoading = () => {
+  return {
+    type: SET_LOADING,
+  }
+}
+
+export const setError = () => {
+  return {
+    type: SET_ERROR,
+  }
+}
+
+export const filterCharacters = () => {
   return {
     type: FILTER_CHARACTERS,
-    payload: query,
   }
 }
 

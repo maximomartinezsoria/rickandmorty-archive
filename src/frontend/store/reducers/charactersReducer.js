@@ -1,5 +1,5 @@
 import {
-  GET_CHARACTERS,
+  SET_CHARACTERS,
   SET_ERROR,
   SET_LOADING,
   SET_NAME_QUERY,
@@ -23,7 +23,7 @@ const initialCharactersState = {
 
 export default function charactersReducer(state = initialCharactersState, action) {
   switch (action.type) {
-    case GET_CHARACTERS:
+    case SET_CHARACTERS:
       return {
         ...state,
         characters: action.payload,
