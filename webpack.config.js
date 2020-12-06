@@ -72,7 +72,7 @@ module.exports = {
       filename: isProd ? 'css/app.[hash].css' : 'css/app.css',
     }),
     new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: ['**/app.*'],
+      cleanOnceBeforeBuildPatterns: ['**/*'],
     }),
     !isProd ? new webpack.HotModuleReplacementPlugin() : () => {},
     isProd ? new WebpackManifestPlugin() : () => {},
