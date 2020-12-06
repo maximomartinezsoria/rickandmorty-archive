@@ -46,5 +46,10 @@
     "webpack": "4.42.1",
     "webpack-cli": "3.3.11",
     "webpack-manifest-plugin": "3.0.0-rc.0"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/frontend/__test__/setupTest.js"
+    ]
   }
 }
