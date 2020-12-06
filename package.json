@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "start": "node src/server/",
     "dev": "nodemon src/server/",
     "build": "ENV=production webpack-cli --config ./webpack.config.js",
     "test": "jest",
