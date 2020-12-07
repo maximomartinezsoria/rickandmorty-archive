@@ -65,6 +65,17 @@ module.exports = {
         use: 'babel-loader',
         exclude: /node_modules/,
       },
+      {
+        test: /\.(svg|png|gif|jpg|ico)$/,
+        include: path.resolve(__dirname, 'src/frontend'),
+        use: {
+          loader: 'file-loader',
+          options: {
+            context: 'src/assets',
+            name: '[name].[ext]',
+          },
+        },
+      },
     ],
   },
   plugins: [

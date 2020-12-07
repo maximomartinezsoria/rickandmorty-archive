@@ -1,4 +1,5 @@
 import './styles/index.styl'
+import './assets/favicon.ico'
 import React from 'react'
 import { hydrate } from 'react-dom'
 import { App } from './App'
