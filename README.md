@@ -1,10 +1,11 @@
 # Rick and Morty Archive
 
 ## Installation
-Install dependencies.
+1. Install dependencies.
 ```
 npm install
 ```
+2. Create the `.env` file based on `env.example`
 
 ### Development mode
 Start development mode.
